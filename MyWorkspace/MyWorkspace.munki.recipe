@@ -14,10 +14,6 @@
             <string>MyWorkspace</string>
             <key>pkginfo</key>
             <dict>
-                <key>blocking_applications</key>
-                <array>
-                    <string>MyWorkspace</string>
-                </array>
                 <key>catalogs</key>
                 <array>
                     <string>testing</string>
