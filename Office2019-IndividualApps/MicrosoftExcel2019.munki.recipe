@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Imports the latest standalone Excel 2019 installer to munki</string>
+	<key>Identifier</key>
+	<string>com.github.arubdesu.office-recipes.munki.MicrosoftExcel2019</string>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Microsoft Excel</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Microsoft %SHORTNAME%</string>
+				<string>Microsoft Error Reporting</string>
+				<string>Microsoft AutoUpdate</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>name</key>
+			<string>Microsoft%SHORTNAME%_Standalone</string>
+			<key>description</key>
+			<string>See your data in new, intuitive ways. Powerful charts, graphs, and keyboard shortcuts turn columns of numbers into valuable information, so you can work easier.</string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.arubdesu.office-recipes.download.MicrosoftExcel2019</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
