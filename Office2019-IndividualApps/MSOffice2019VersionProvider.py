@@ -29,7 +29,7 @@ __all__ = ["MSOffice2019VersionProvider"]
 
 # Installers are all supposed to be multilingual.
 # Only Locale and Channel (Prod vs. Insider Slow/Fast) options available
-BASE_URL = "https://officecdn.microsoft.com/pr/%s/OfficeMac/0409%s2019.xml"
+BASE_URL = "https://officecdn.microsoft.com/pr/%s/MacAutoupdate/0409%s2019.xml"
 PROD_DICT = {
     'Excel': ['XCEL', '525135'],
     'OneNote': ['ONMC', '820886'],
