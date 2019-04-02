@@ -3,13 +3,13 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Uses parent download recipe to download the latest Microsoft Office 2016 SKU-less installer package and import it into the JSS.</string>
+        <string>Uses parent download recipe to download the latest Microsoft Office 2019 SKU-less installer package and import it into the JSS.</string>
         <key>Identifier</key>
-        <string>com.github.autopkg.office-recipes.jss.Office2016Suite</string>
+        <string>com.github.autopkg.office-recipes.jss.Office2019Suite</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
-            <string>Office2016</string>
+            <string>Office2019</string>
             <key>CATEGORY</key>
             <string>Microsoft</string>
             <key>POLICY_CATEGORY</key>
@@ -17,18 +17,18 @@
             <key>POLICY_TEMPLATE</key>
             <string>%RECIPE_DIR%/PolicyTemplate.xml</string>
             <key>ICON</key>
-            <string>%RECIPE_DIR%/Office2016.png</string>
+            <string>%RECIPE_DIR%/Office2019.png</string>
             <key>GROUP_TEMPLATE</key>
             <string>%RECIPE_DIR%/SmartGroupTemplate.xml</string>
             <key>GROUP_NAME</key>
             <string>%NAME%-update-smart</string>
             <key>DESCRIPTION</key>
-            <string>Office 2016 is a software suite for word processing, spreadsheets, presentations, graphics and more.</string>
+            <string>Office 2019 is a software suite for word processing, spreadsheets, presentations, graphics and more.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.1</string>
         <key>ParentRecipe</key>
-        <string>com.github.autopkg.office-recipes.download.Office2016Suite</string>
+        <string>com.github.autopkg.office-recipes.download.Office2019Suite</string>
         <key>Process</key>
         <array>
             <dict>

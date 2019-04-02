@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Microsoft Office 2016 SKU-less installer package and uploads to LANrev.
+	<string>Downloads the latest Microsoft Office 2019 SKU-less installer package and uploads to LANrev.
 
 Set the REGION key to:
 
@@ -11,20 +11,20 @@ Set the REGION key to:
 532572 for Europe
 532577 for Asia</string>
 	<key>Identifier</key>
-	<string>com.github.autopkg.office-recipes.lanrev.Office2016Suite</string>
+	<string>com.github.autopkg.office-recipes.lanrev.Office2019Suite</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL_BASE</key>
 		<string>https://go.microsoft.com/fwlink/?linkid=</string>
 		<key>NAME</key>
-		<string>Office2016Suite</string>
+		<string>Office2019Suite</string>
 		<key>REGION</key>
 		<string>525133</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.autopkg.office-recipes.download.Office2016Suite</string>
+	<string>com.github.autopkg.office-recipes.download.Office2019Suite</string>
 	<key>Process</key>
 	<array>
 		<dict>

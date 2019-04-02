@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright 2016 Allister Banks, lovingly based on work by Hannes Juutilainen
+# Copyright 2019 Allister Banks, lovingly based on work by Hannes Juutilainen
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,19 +22,27 @@ from autopkglib import Processor, ProcessorError
 
 __all__ = ["OfficeSuiteSKULessVersionProvider"]
 
-FEED_URL = "https://macadmins.software/versions.xml"
+FEED_URL = "https://macadmins.software/latest.xml"
 
 class OfficeSuiteSKULessVersionProvider(Processor):
-    """Provides the version of the latest SKU-Less Office 2016 Suite release"""
-    input_variables = {}
+    """Provides the version of the latest SKU-Less Office 2019 Suite release"""
+    input_variables = {
+        "installertype":
+        {
+            "description": "Type of installer for latest suite release package, can be o365, vl2019 or vl2016.",
+            "required": False,
+            "default": "vl2019"
+        }
+
+    }
     output_variables = {
         "version": {
-            "description": "Version of the latest SKU-Less Office 2016 Suite release.",
+            "description": "Version of the latest SKU-Less Office 2019 Suite release.",
         },
     }
     description = __doc__
-    
-    def get_version(self, FEED_URL):
+
+    def get_version(self, installertype, FEED_URL):
         """Parse the macadmins.software/versions.xml feed for the latest O365 version number"""
         try:
             raw_xml = urllib2.urlopen(FEED_URL)
@@ -44,11 +52,11 @@ class OfficeSuiteSKULessVersionProvider(Processor):
         version = ''
         root = ET.fromstring(xml)
         for vers in root.iter('latest'):
-            version = vers.find('o365').text
+            version = vers.find(installertype).text
         return version
-    
+
     def main(self):
-        self.env["version"] = self.get_version(FEED_URL)
+        self.env["version"] = self.get_version(self.env["installertype"], FEED_URL)
         self.output("Found Version Number %s" % self.env["version"])
 
 

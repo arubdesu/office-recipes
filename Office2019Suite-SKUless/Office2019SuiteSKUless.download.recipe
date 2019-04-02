@@ -3,21 +3,32 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest Microsoft Office 2016 SKU-less installer package.
+    <string>Downloads the latest Microsoft Office 2019 SKU-less installer package.
 
 Set the REGION key to:
 
-525133 for Americas (default)
-532572 for Europe
-532577 for Asia</string>
+525133 for Office 365 and Americas Volume LATEST (default)
+871743 for Office 2016
+
+Due to the Downloads using Microsoft's Global CDN's the region code is now for type of installer
+
+Set the INSTALLERTYPE key to (this is for version only!):
+
+o365 for Office 365 (default)
+vl2019 for Office 2019
+vl2016 for Office 2016
+
+</string>
     <key>Identifier</key>
-    <string>com.github.autopkg.office-recipes.download.Office2016Suite</string>
+    <string>com.github.autopkg.office-recipes.download.Office2019Suite</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Office2016Suite</string>
+        <string>Office2019Suite</string>
         <key>REGION</key>
         <string>525133</string>
+        <key>INSTALLERTYPE</key>
+        <string>o365</string>
         <key>DOWNLOAD_URL_BASE</key>
         <string>https://go.microsoft.com/fwlink/?linkid=</string>
     </dict>
@@ -28,6 +39,11 @@ Set the REGION key to:
         <dict>
             <key>Processor</key>
             <string>OfficeSuiteSKULessVersionProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>installertype</key>
+                <string>%INSTALLERTYPE%</string>
+            </dict>
         </dict>
         <dict>
             <key>Processor</key>
