@@ -20,10 +20,13 @@
 
 import plistlib
 import re
-import urllib2
 
 from autopkglib import Processor, ProcessorError
 
+try:
+    from urllib.request import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["MSOffice2019VersionProvider"]
 
@@ -99,7 +102,7 @@ class MSOffice2019VersionProvider(Processor):
                 "uuid" % (", ".join(CHANNELS.keys())))
         base_url = BASE_URL % (CHANNELS[channel_input], PROD_DICT[self.env["product"]][0])
         # Get metadata URL
-        req = urllib2.Request(base_url)
+        req = urlopen(base_url)
         # Add the MAU User-Agent, since MAU feed server seems to explicitly
         # block a User-Agent of 'Python-urllib/2.7' - even a blank User-Agent
         # string passes.
@@ -107,7 +110,7 @@ class MSOffice2019VersionProvider(Processor):
                        "Microsoft%20AutoUpdate/3.6.16080300 CFNetwork/760.6.3 Darwin/15.6.0 (x86_64)")
 
         try:
-            fdesc = urllib2.urlopen(req)
+            fdesc = urlopen(req)
             data = fdesc.read()
             fdesc.close()
         except BaseException as err:
