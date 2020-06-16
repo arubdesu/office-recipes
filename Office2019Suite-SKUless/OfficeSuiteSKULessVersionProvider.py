@@ -14,17 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import urllib2
+from __future__ import absolute_import
+
 import xml.etree.ElementTree as ET
 
-from autopkglib import Processor, ProcessorError
+from autopkglib import Processor, ProcessorError, URLGetter
 
 
 __all__ = ["OfficeSuiteSKULessVersionProvider"]
 
 FEED_URL = "https://macadmins.software/latest.xml"
 
-class OfficeSuiteSKULessVersionProvider(Processor):
+class OfficeSuiteSKULessVersionProvider(URLGetter):
     """Provides the version of the latest SKU-Less Office 2019 Suite release"""
     input_variables = {
         "installertype":
@@ -45,9 +46,8 @@ class OfficeSuiteSKULessVersionProvider(Processor):
     def get_version(self, installertype, FEED_URL):
         """Parse the macadmins.software/versions.xml feed for the latest O365 version number"""
         try:
-            raw_xml = urllib2.urlopen(FEED_URL)
-            xml = raw_xml.read()
-        except BaseException as e:
+            xml = self.download(FEED_URL)
+        except Exception as e:
             raise ProcessorError("Can't download %s: %s" % (FEED_URL, e))
         version = ''
         root = ET.fromstring(xml)
